@@ -1,0 +1,38 @@
+7. PHP szerver
+
+A PHP szerver logikai felépítése egy jól strukturált fájlrendszerre épül, ahol minden komponens elkülönített feladatot lát el. A rendszer
+- routing mechanizmusa felelős azért, hogy a beérkező kéréseket értelmezze, és azokat a megfelelő kódrészletekhez irányítsa. Ezek után az API réteg lép működésbe.
+- Az API ellenőrzi az adatokat, és hoz döntést arról, hogy milyen választ kell visszaadni a kliens számára.
+
+- Az adatbázis kezelés a Database réteg feladata, amely adatokat kér le, módosít vagy töröl a MySQL rendszerben. 
+- Az innen visszakapott információkat a Logic réteg dolgozza fel, ahol objektum-orientált módon, osztályokba szervezve tároljuk az adatokat.
+
+- A válaszküldést a Response komponens végzi, amely formázza, majd visszaküldi az adatokat a kliens számára. Eközben 
+- a Logging modul minden fontos eseményt, mint például a hibákat vagy sikeres műveleteket, naplóz egy CSV fájlba, ami segíti a hibakeresést és a továbbfejlesztést.
+
+- Végezetül, a Settings modul gondoskodik arról, hogy induláskor, a konfigurációs fájl beolvasásával a rendszer minden szükséges paramétert automatikusan beállítson.
+
+20. Bejelentkezés
+
+A rendszerbe való belépés azonosító és jelszó megadásával történik. A bejelentkezés folyamata biztonságosan kezeli az adatokat, a jelszavak pedig titkosított formában tárolódnak. Sikeres hitelesítés után a felhasználó jogosultságinak megfelelően kap hozzáférést az alkalmazás használatához.
+
+21. Felhasználói felület
+
+A felhasználói felületet úgy alakítottuk ki, hogy többféle platformon is egységes élményt nyújtson. A különböző típusú felületek – webes, asztali és mobil – ugyanazokat a funkcionalitásokat biztosítják, figyelembe véve a hálózati késleltetést, a nyelvi beállításokat és az eszközspecifikus jellemzőket. A felület többnyelvűsége nyelvfájlokon keresztül valósul meg, így új nyelv támogatása könnyen hozzáadható. A modern JavaScript és CSS megoldások biztosítják a gyors, reszponzív működést.
+
+22. Keresés
+
+A keresési funkció kulcsfontosságú a hatékony munkavégzéshez. A rendszer lehetővé teszi az adatok gyors szűrését különböző szempontok szerint, például időintervallum, tárgytípus, telephely vagy művelet alapján. Emellett az adatok részletezésére és kombinált szűrésre is van lehetőségünk.
+
+23. Statisztika
+
+A statisztikai modul átfogó képet ad a rendszer használatáról és az adatmozgásokról. Megjeleníti például, hogy mely típusból mennyi lett bevételezve vagy kiadva, valamint az ezek alapján kiszámolt különbségeket is. Ezeket az információkat különféle szűrési lehetőségekkel lehet testre szabni, például időszakra, telephelyre vagy raktárra vonatkozóan. 
+
+26. Tesztelés
+
+Testing plays a crucial role in ensuring the reliability and stability of the entire system. We've implemented end-to-end (E2E) automated testing that simulates user interactions across all platforms: web, desktop, and mobile. These tests replicate real-world usage by clicking through interfaces, validating expected outcomes, and detecting regressions.
+
+For the web interface, we use Playwright, a modern testing tool capable of running roughly 70 tests with different data sets. The desktop application is tested using TestNG, while the mobile version leverages both J4Unit and Espresso UI, running around 140 test cases each.
+
+Screenshots are automatically captured and included in the documentation for clear visual traceability. This comprehensive test suite ensures that any changes or updates made to the system can be confidently deployed with minimal risk.
+
